@@ -267,3 +267,41 @@ img.bimg{width:auto;max-width:none;object-fit:contain}
 .trio .bottle img.bimg{height:100%}
 .card .art img.bimg,.tile .art img.bimg{height:100%;filter:drop-shadow(0 18px 16px rgba(0,0,0,.22))}
 .sku-art img.bimg{position:relative;height:96%;filter:drop-shadow(0 28px 22px rgba(60,30,10,.3))}
+
+/* ===== island / lagoon theme ===== */
+:root{--lagoon:#17A2A6;--ocean:#0B4F5C;--sun:#FFC857;--sandy:#F6E3BE}
+.hero{position:relative;background:
+  radial-gradient(circle at 74% 34%,rgba(255,224,140,.95) 0,rgba(255,206,120,.55) 140px,rgba(255,206,120,0) 330px),
+  linear-gradient(180deg,#FFF0D6 0%,#FFD9A8 42%,#9BDCD2 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:70px}
+.hero .palm{position:absolute;top:-30px;width:430px;max-width:44vw;z-index:1;pointer-events:none;opacity:.96;filter:drop-shadow(0 14px 10px rgba(5,50,40,.25))}
+.hero .palm-l{left:-110px}
+.hero .palm-r{right:-110px;transform:scaleX(-1)}
+.hero .wave,.wave-block{position:absolute;left:0;right:0;bottom:-1px;height:70px;z-index:3;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.w-cream{background-image:url(../img/wave-cream.svg)}
+.w-sand{background-image:url(../img/wave-sand.svg)}
+.trio::before{content:"";position:absolute;left:-6%;right:-6%;bottom:-22px;height:70px;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,#F9E7C2 0,#EBCB94 70%,rgba(235,203,148,0) 100%);z-index:0}
+.trio .bottle{z-index:1}.trio .b2{z-index:2}
+.trio .nuts{position:absolute;left:6%;bottom:-18px;width:170px;z-index:3;filter:drop-shadow(0 8px 6px rgba(60,30,10,.35))}
+.eyebrow{color:var(--ocean)}
+.facts{position:relative;background:linear-gradient(180deg,var(--sand),var(--sandy))}
+.trade{background-color:var(--ocean)}
+.trade::before{background:linear-gradient(100deg,var(--ocean) 35%,rgba(23,162,166,.6))}
+.btn.teal{background:var(--lagoon)}
+.nav .btn{background:var(--lagoon)}
+.site-header{background:rgba(255,248,238,.92)}
+.sku-hero{position:relative}
+.sku-hero .wrap{padding-bottom:90px}
+.sku-hero .wave{position:absolute;left:0;right:0;bottom:-1px;height:60px;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+@media (max-width:900px){
+  .hero .palm{width:260px;top:-20px}.hero .palm-l{left:-90px}.hero .palm-r{right:-90px}
+  .trio .nuts{width:120px;left:2%}
+  .hero .wave{height:44px}
+}
+.hero .palm{width:340px;top:-60px}
+.hero .palm-l{left:-130px}
+.hero .palm-r{right:-120px}
+.trio .nuts{left:-2%;bottom:-14px;width:150px}
+.hero .palm-l{width:360px;top:-120px;left:-120px}
+.hero .palm-r{width:520px;max-width:none;top:-90px;right:-150px}
+@media (max-width:900px){.hero .palm-l{width:230px;top:-60px;left:-80px}.hero .palm-r{width:260px;top:-50px;right:-90px}}
