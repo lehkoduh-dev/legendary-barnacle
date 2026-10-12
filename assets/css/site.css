@@ -308,15 +308,23 @@ img.bimg{width:auto;max-width:none;object-fit:contain}
 
 .art-img{width:100%;height:auto;border-radius:var(--radius);margin:-28px 0 12px;box-shadow:0 20px 50px rgba(60,30,10,.2);aspect-ratio:3/2;object-fit:cover;position:relative}
 
-/* hero: paradise beach photo backdrop */
+/* hero: bar cart scene with real bottles baked in */
 .hero{background:
-  linear-gradient(90deg,rgba(255,249,240,.92) 0,rgba(255,249,240,.72) 34%,rgba(255,249,240,0) 60%),
-  url(../img/hero-beach.jpg) 72% bottom/cover no-repeat;background-color:#bfe9e4}
-.hero .palm,.hero .trio .nuts{display:none}
-.trio::before{background:radial-gradient(ellipse at 50% 50%,rgba(40,25,10,.38) 0,rgba(40,25,10,.16) 55%,rgba(40,25,10,0) 75%);bottom:-10px;height:46px;left:0;right:0}
+  linear-gradient(90deg,rgba(255,249,240,.94) 0,rgba(255,249,240,.86) 26%,rgba(255,249,240,.35) 40%,rgba(255,249,240,0) 50%),
+  url(../img/hero-cart.jpg) 60% bottom/cover no-repeat;background-color:#2fb3a8;min-height:min(56vw,640px)}
+.hero .palm,.hero .trio{display:none}
+.hero .wrap{display:block}
+.hero .wrap>div:first-child{max-width:34%}
+.hero h1{font-size:clamp(34px,3.5vw,52px)}
+.hero .lead{font-size:clamp(15px,1.25vw,18px)}
+.hero .cta{flex-wrap:wrap}
 .hero .wave{height:46px}
 @media (max-width:900px){
-  .hero{background:
-    linear-gradient(180deg,rgba(255,249,240,.9) 0,rgba(255,249,240,.78) 45%,rgba(255,249,240,0) 70%),
-    url(../img/hero-beach.jpg) 78% bottom/cover no-repeat;background-color:#bfe9e4}
+  .hero{min-height:0;padding-bottom:calc(100vw*1.1);background:
+    linear-gradient(180deg,rgba(255,249,240,.97) 0,rgba(255,249,240,.9) 38%,rgba(255,249,240,0) 52%),
+    url(../img/hero-cart-m.jpg) center bottom/100% auto no-repeat;background-color:#2fb3a8}
+  .hero .wrap>div:first-child{max-width:none}
+  .hero h1{font-size:clamp(32px,9vw,44px)}
+  .hero .lead{font-size:16px}
+}
 }
