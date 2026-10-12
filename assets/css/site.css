@@ -311,13 +311,13 @@ img.bimg{width:auto;max-width:none;object-fit:contain}
 /* hero: paradise beach photo backdrop */
 .hero{background:
   linear-gradient(90deg,rgba(255,249,240,.92) 0,rgba(255,249,240,.72) 34%,rgba(255,249,240,0) 60%),
-  url(../img/hero-beach.jpg) 72% bottom/cover no-repeat;background-color:#bfe9e4;min-height:0}
+  url(../img/hero-beach2.jpg) 72% bottom/cover no-repeat;background-color:#bfe9e4;min-height:0}
 .hero .palm,.hero .trio .nuts{display:none}
 .hero .trio::before{background:radial-gradient(ellipse at 50% 50%,rgba(40,25,10,.38) 0,rgba(40,25,10,.16) 55%,rgba(40,25,10,0) 75%);bottom:-10px;height:46px;left:0;right:0}
 .hero .wave{height:46px}
 @media (max-width:900px){
   .hero{background:
     linear-gradient(180deg,rgba(255,249,240,.9) 0,rgba(255,249,240,.78) 45%,rgba(255,249,240,0) 70%),
-    url(../img/hero-beach.jpg) 78% bottom/cover no-repeat;background-color:#bfe9e4}
+    url(../img/hero-beach2.jpg) 78% bottom/cover no-repeat;background-color:#bfe9e4}
 }
 }
