@@ -305,3 +305,5 @@ img.bimg{width:auto;max-width:none;object-fit:contain}
 .hero .palm-l{width:360px;top:-120px;left:-120px}
 .hero .palm-r{width:520px;max-width:none;top:-90px;right:-150px}
 @media (max-width:900px){.hero .palm-l{width:230px;top:-60px;left:-80px}.hero .palm-r{width:260px;top:-50px;right:-90px}}
+
+.art-img{width:100%;height:auto;border-radius:var(--radius);margin:-28px 0 12px;box-shadow:0 20px 50px rgba(60,30,10,.2);aspect-ratio:3/2;object-fit:cover;position:relative}
