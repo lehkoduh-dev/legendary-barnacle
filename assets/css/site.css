@@ -320,4 +320,15 @@ img.bimg{width:auto;max-width:none;object-fit:contain}
     linear-gradient(180deg,rgba(255,249,240,.9) 0,rgba(255,249,240,.78) 45%,rgba(255,249,240,0) 70%),
     url(../img/hero-beach2.jpg) 78% bottom/cover no-repeat;background-color:#bfe9e4}
 }
+
+/* scroll-driven rotating bottle (home, wide screens) */
+.spin-bottle{position:fixed;left:0;top:0;z-index:40;pointer-events:none;will-change:transform;opacity:0;transition:opacity .5s ease;filter:drop-shadow(0 26px 22px rgba(60,30,10,.28))}
+.spin-bottle.ready{opacity:1}
+html.spin-on .hero .trio .b2{visibility:hidden}
+html.spin-on .hero .trio .b1,html.spin-on .hero .trio .b3{pointer-events:none;will-change:translate,scale,opacity}
+html.spin-on .hero .trio .b1{translate:calc(var(--p,0)*90px) calc(var(--p,0)*-60px);scale:calc(1 - var(--p,0)*.55);opacity:calc(1 - var(--p,0)*1.25);filter:blur(calc(var(--p,0)*5px)) drop-shadow(0 26px 22px rgba(60,30,10,.28))}
+html.spin-on .hero .trio .b3{translate:calc(var(--p,0)*-90px) calc(var(--p,0)*-60px);scale:calc(1 - var(--p,0)*.55);opacity:calc(1 - var(--p,0)*1.25);filter:blur(calc(var(--p,0)*5px)) drop-shadow(0 26px 22px rgba(60,30,10,.28))}
+@media (min-width:1100px){
+  html.spin-on .nav a{white-space:nowrap}
+  html.spin-on .wrap{max-width:min(1140px,calc(100vw - 19vw - 60px));margin-left:max(24px,calc((100vw - 1140px)/2 - 6vw));margin-right:0}
 }
