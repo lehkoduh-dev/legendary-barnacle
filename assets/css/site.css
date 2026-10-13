@@ -329,3 +329,9 @@ html.spin-on .hero .trio .b1,html.spin-on .hero .trio .b3{pointer-events:none;wi
 html.spin-on .hero .trio .b1{translate:calc(var(--p,0)*90px) calc(var(--p,0)*-60px);scale:calc(1 - var(--p,0)*.55);opacity:calc(1 - var(--p,0)*1.25);filter:blur(calc(var(--p,0)*5px)) drop-shadow(0 26px 22px rgba(60,30,10,.28))}
 html.spin-on .hero .trio .b3{translate:calc(var(--p,0)*-90px) calc(var(--p,0)*-60px);scale:calc(1 - var(--p,0)*.55);opacity:calc(1 - var(--p,0)*1.25);filter:blur(calc(var(--p,0)*5px)) drop-shadow(0 26px 22px rgba(60,30,10,.28))}
 html[data-spin="spiced"].spin-on #blends .card.spiced img.bimg,html[data-spin="pink"].spin-on #blends .card.pink img.bimg{visibility:hidden}
+.spin-m{position:absolute;left:0;top:0;z-index:40;pointer-events:none;will-change:transform;opacity:0;transition:opacity .4s ease;filter:drop-shadow(0 18px 14px rgba(60,30,10,.28))}
+.spin-m.ready{opacity:1}
+html.spin-m-on .hero .trio .b2{visibility:hidden}
+html.spin-m-on .hero .trio .b1,html.spin-m-on .hero .trio .b3{pointer-events:none}
+html.spin-m-on .hero .trio .b1{translate:calc(var(--p,0)*40px) calc(var(--p,0)*-30px);scale:calc(1 - var(--p,0)*.5);opacity:calc(1 - var(--p,0)*1.25)}
+html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*-30px);scale:calc(1 - var(--p,0)*.5);opacity:calc(1 - var(--p,0)*1.25)}
