@@ -101,7 +101,6 @@
     canvas.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
     var rot = t * 4 * Math.PI;                     // two full turns, lands front-facing
     var docked = y >= sEnd;
-    target.style.visibility = docked ? 'hidden' : '';
     canvas.classList.toggle('docked', docked);
     if (lastRot === null || Math.abs(rot - lastRot) > 0.002) { draw(rot); lastRot = rot; }
   }
