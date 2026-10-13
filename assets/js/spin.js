@@ -6,15 +6,15 @@
   if (reduce || window.innerWidth < MIN_W) return;
   var hero = document.querySelector('.hero');
   var b2 = document.querySelector('.hero .trio .b2 img');
-  if (!hero || !b2) return;
+  var target = document.querySelector('#blends .card.spiced img.bimg');
+  if (!hero || !b2 || !target) return;
 
   var V = (document.currentScript && document.currentScript.src.split('?v=')[1]) || '1';
   var W = 542, H = 1068, CX = 271, RL = 266;
   var FRONT_HALF = 112.2 * Math.PI / 180, BACK_HALF = 46 * Math.PI / 180;
-  var FRONT_Y = 866 - 408, BACK_Y = 700 - Math.floor(387 / 2);
 
   var imgs = {}, left = 3;
-  ['base', 'lychee-front', 'lychee-back'].forEach(function (n) {
+  ['base', 'spiced-front', 'spiced-back'].forEach(function (n) {
     var im = new Image();
     im.onload = function () { imgs[n] = im; if (--left === 0) start(); };
     im.onerror = function () { /* keep the static hero */ };
@@ -59,8 +59,8 @@
     ctx.drawImage(imgs.base, 0, 0);
     lctx.clearRect(0, 0, W, H);
     lctx.globalCompositeOperation = 'source-over';
-    strip(imgs['lychee-front'], 0, FRONT_HALF, FRONT_Y, rot);
-    strip(imgs['lychee-back'], Math.PI, BACK_HALF, BACK_Y, rot);
+    strip(imgs['spiced-front'], 0, FRONT_HALF, 866 - imgs['spiced-front'].height, rot);
+    strip(imgs['spiced-back'], Math.PI, BACK_HALF, 700 - Math.floor(imgs['spiced-back'].height / 2), rot);
     lctx.globalCompositeOperation = 'source-atop';
     lctx.fillStyle = shadeCache.shade; lctx.fillRect(0, 0, W, H);
     lctx.fillStyle = shadeCache.spec; lctx.fillRect(0, 0, W, H);
@@ -90,10 +90,19 @@
     var dx = vw - dw - vw * 0.02, dy = Math.max(84, (vh - dh) / 2 + 34);
     var nx = natural.x, ny = natural.y - y;
     var cx = lerp(nx, dx, e), cy = lerp(ny, dy, e), cw = lerp(natural.w, dw, e), ch = lerp(natural.h, dh, e);
+    // docking into the third card
+    var tr = target.getBoundingClientRect();
+    var q = Math.max(0, Math.min(1, (vh * 0.95 - tr.top) / (vh * 0.55)));
+    var eq = smooth(q);
+    cx = lerp(cx, tr.left, eq); cy = lerp(cy, tr.top, eq); cw = lerp(cw, tr.width, eq); ch = lerp(ch, tr.height, eq);
     canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
     canvas.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
-    var max = Math.max(1, document.documentElement.scrollHeight - vh);
-    var rot = (y / max) * 2.5 * 2 * Math.PI;
+    var base = y * 0.0065;
+    var end = Math.round(base / (2 * Math.PI)) * 2 * Math.PI;
+    var rot = lerp(base, end, eq);
+    var docked = q >= 0.995;
+    target.style.visibility = docked ? 'hidden' : '';
+    canvas.classList.toggle('docked', docked);
     if (lastRot === null || Math.abs(rot - lastRot) > 0.002) { draw(rot); lastRot = rot; }
   }
 
