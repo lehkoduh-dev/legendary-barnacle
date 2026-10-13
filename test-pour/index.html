@@ -23,6 +23,10 @@
 .pour-cork{z-index:41;filter:drop-shadow(0 8px 6px rgba(60,30,10,.25))}
 .pour-bottle.ready,.pour-cork.ready{opacity:1}
 .pour-stream{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:39;pointer-events:none;overflow:visible}
+html.pour-on #blends .card.pink img.bimg{visibility:hidden}
+.pour-wrap{position:relative}
+.pour-stage{position:sticky;top:0;overflow:hidden;background:linear-gradient(180deg,#FCE9F1 0%,#F9C6DE 55%,#F4A9C8 120%)}
+.pour-stage::before{content:"";position:absolute;inset:0;background:url(/assets/img/tile-pink.jpg) center/380px;opacity:.14;mix-blend-mode:multiply}
 </style></head>
 <body>
 <div class="gate" id="age-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
@@ -166,4 +170,4 @@
   <div class="legal"><span>Enjoy responsibly. For adults of legal drinking age only. Beach Heaven is a product of Kroonbrau BV, Amsterdam.</span><span>&copy; 2026 Beach Heaven</span></div>
 </div></footer>
 <script src="/assets/js/site.js?v=31" defer></script>
-<script src="/assets/js/pour.js?v=31" defer></script><script src="/assets/js/spin-m.js?v=31" defer></script></body></html>
+<script src="/assets/js/spin.js?v=31" defer></script><script src="/assets/js/spin-m.js?v=31" defer></script><script src="/assets/js/pour.js?v=31" defer></script></body></html>
