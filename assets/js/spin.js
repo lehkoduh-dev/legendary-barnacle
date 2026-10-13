@@ -2,8 +2,8 @@
 (function () {
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
-  var mobile = window.innerWidth < 1000;
+  if (reduce || window.innerWidth < 1000) return;   // phones/tablets keep the static hero
+  var mobile = false;
   var KEY = mobile ? 'pink' : 'spiced';   // first card on phones (stacked), third card on desktop
   var hero = document.querySelector('.hero');
   var b2 = document.querySelector('.hero .trio .b2 img');
