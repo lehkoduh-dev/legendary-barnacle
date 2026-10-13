@@ -1,20 +1,30 @@
 /* Scroll-driven rotating bottle (home page, wide screens only) */
 (function () {
   'use strict';
-  var MIN_W = 1000;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || window.innerWidth < MIN_W) return;
+  if (reduce) return;
+  var mobile = window.innerWidth < 1000;
+  var KEY = mobile ? 'pink' : 'spiced';   // first card on phones (stacked), third card on desktop
   var hero = document.querySelector('.hero');
   var b2 = document.querySelector('.hero .trio .b2 img');
-  var target = document.querySelector('#blends .card.spiced img.bimg');
+  var target = document.querySelector('#blends .card.' + KEY + ' img.bimg');
+  if (mobile) {   // put the bottle that matches the first card in the foreground
+    var b1 = document.querySelector('.hero .trio .b1 img');
+    if (b1 && b2 && /bottle-spiced/.test(b2.getAttribute('src'))) {
+      var u2 = b2.getAttribute('src'), a2 = b2.alt, a1 = b1.alt;
+      b2.setAttribute('src', u2.replace('bottle-spiced', 'bottle-pink')); b2.alt = a1;
+      b1.setAttribute('src', u2); b1.alt = a2;
+    }
+  }
   if (!hero || !b2 || !target) return;
 
   var V = (document.currentScript && document.currentScript.src.split('?v=')[1]) || '1';
+  var STEP = mobile ? 2 : 1;
   var W = 542, H = 1068, CX = 271, RL = 266;
   var FRONT_HALF = 112.2 * Math.PI / 180, BACK_HALF = 46 * Math.PI / 180;
 
   var imgs = {}, left = 3;
-  ['base', 'spiced-front', 'spiced-back'].forEach(function (n) {
+  ['base', KEY + '-front', KEY + '-back'].forEach(function (n) {
     var im = new Image();
     im.onload = function () { imgs[n] = im; if (--left === 0) start(); };
     im.onerror = function () { /* keep the static hero */ };
@@ -42,7 +52,7 @@
 
   function strip(tex, center, half, y0, rot) {
     var tw = tex.width, th = tex.height, x, s, psi, t, sx, sw, du;
-    for (x = CX - RL + 1; x < CX + RL; x++) {
+    for (x = CX - RL + 1; x < CX + RL; x += STEP) {
       s = (x - CX) / RL; psi = Math.asin(s);
       t = norm(psi - rot - center);
       if (Math.abs(t) >= half) continue;
@@ -50,7 +60,7 @@
       du = (1 / (RL * Math.max(0.06, Math.cos(psi)))) / half * 0.5 * (tw - 1);
       sw = Math.max(2, Math.min(60, du));
       var sx0 = Math.max(0, Math.min(tw - sw, sx - sw / 2));
-      lctx.drawImage(tex, sx0, 0, sw, th, x, y0, 1, th);
+      lctx.drawImage(tex, sx0, 0, sw, th, x, y0, STEP, th);
     }
   }
 
@@ -59,8 +69,8 @@
     ctx.drawImage(imgs.base, 0, 0);
     lctx.clearRect(0, 0, W, H);
     lctx.globalCompositeOperation = 'source-over';
-    strip(imgs['spiced-front'], 0, FRONT_HALF, 866 - imgs['spiced-front'].height, rot);
-    strip(imgs['spiced-back'], Math.PI, BACK_HALF, 700 - Math.floor(imgs['spiced-back'].height / 2), rot);
+    strip(imgs[KEY + '-front'], 0, FRONT_HALF, 866 - imgs[KEY + '-front'].height, rot);
+    strip(imgs[KEY + '-back'], Math.PI, BACK_HALF, 700 - Math.floor(imgs[KEY + '-back'].height / 2), rot);
     lctx.globalCompositeOperation = 'source-atop';
     lctx.fillStyle = shadeCache.shade; lctx.fillRect(0, 0, W, H);
     lctx.fillStyle = shadeCache.spec; lctx.fillRect(0, 0, W, H);
@@ -79,9 +89,6 @@
   function frame() {
     ticking = false;
     var vw = window.innerWidth, vh = window.innerHeight, y = window.scrollY;
-    if (vw < MIN_W) { document.documentElement.classList.remove('spin-on'); canvas.style.display = 'none'; return; }
-    canvas.style.display = '';
-    document.documentElement.classList.add('spin-on');
     var heroH = hero.offsetHeight;
     var p = Math.max(0, Math.min(1, y / (heroH * 0.7)));
     hero.style.setProperty('--p', smooth(p).toFixed(4));
@@ -113,6 +120,7 @@
     ctx = canvas.getContext('2d');
     layer = document.createElement('canvas'); layer.width = W; layer.height = H; lctx = layer.getContext('2d');
     shadeCache.shade = gradient(lctx, 'shade'); shadeCache.spec = gradient(lctx, 'spec');
+    document.documentElement.setAttribute('data-spin', KEY);
     document.body.appendChild(canvas);
     measure(); draw(0); lastRot = 0;
     document.documentElement.classList.add('spin-on');
