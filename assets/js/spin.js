@@ -1,7 +1,7 @@
 /* Scroll-driven rotating bottle (home page, wide screens only) */
 (function () {
   'use strict';
-  var MIN_W = 1100;
+  var MIN_W = 1000;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || window.innerWidth < MIN_W) return;
   var hero = document.querySelector('.hero');
@@ -84,23 +84,23 @@
     document.documentElement.classList.add('spin-on');
     var heroH = hero.offsetHeight;
     var p = Math.max(0, Math.min(1, y / (heroH * 0.7)));
-    var e = smooth(p);
-    hero.style.setProperty('--p', e.toFixed(4));
-    var dw = Math.min(vw * 0.16, 240), dh = dw * H / W;
-    var dx = vw - dw - vw * 0.02, dy = Math.max(84, (vh - dh) / 2 + 34);
-    var nx = natural.x, ny = natural.y - y;
-    var cx = lerp(nx, dx, e), cy = lerp(ny, dy, e), cw = lerp(natural.w, dw, e), ch = lerp(natural.h, dh, e);
-    // docking into the third card
+    hero.style.setProperty('--p', smooth(p).toFixed(4));
     var tr = target.getBoundingClientRect();
-    var q = Math.max(0, Math.min(1, (vh * 0.95 - tr.top) / (vh * 0.55)));
-    var eq = smooth(q);
-    cx = lerp(cx, tr.left, eq); cy = lerp(cy, tr.top, eq); cw = lerp(cw, tr.width, eq); ch = lerp(ch, tr.height, eq);
+    var tgtY = tr.top + y;                         // page position of the card bottle
+    var sEnd = Math.max(240, tgtY - vh * 0.30);    // scroll position where the bottle has landed
+    var t = Math.max(0, Math.min(1, y / sEnd));
+    var s = smooth(t);
+    var cx, cy, cw, ch;
+    if (y >= sEnd) { cx = tr.left; cy = tr.top; cw = tr.width; ch = tr.height; }
+    else {
+      cx = lerp(natural.x, tr.left, s);
+      cy = lerp(natural.y, tgtY, s) - y;
+      cw = lerp(natural.w, tr.width, s); ch = lerp(natural.h, tr.height, s);
+    }
     canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
     canvas.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
-    var base = y * 0.0065;
-    var end = Math.round(base / (2 * Math.PI)) * 2 * Math.PI;
-    var rot = lerp(base, end, eq);
-    var docked = q >= 0.995;
+    var rot = t * 4 * Math.PI;                     // two full turns, lands front-facing
+    var docked = y >= sEnd;
     target.style.visibility = docked ? 'hidden' : '';
     canvas.classList.toggle('docked', docked);
     if (lastRot === null || Math.abs(rot - lastRot) > 0.002) { draw(rot); lastRot = rot; }
