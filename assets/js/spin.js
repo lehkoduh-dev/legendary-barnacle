@@ -69,8 +69,8 @@
     ctx.drawImage(imgs.base, 0, 0);
     lctx.clearRect(0, 0, W, H);
     lctx.globalCompositeOperation = 'source-over';
-    strip(imgs[KEY + '-front'], 0, FRONT_HALF, 866 - imgs[KEY + '-front'].height, rot);
-    strip(imgs[KEY + '-back'], Math.PI, BACK_HALF, 700 - Math.floor(imgs[KEY + '-back'].height / 2), rot);
+    strip(imgs[KEY + '-front'], 0, FRONT_HALF, 837 - imgs[KEY + '-front'].height, rot);
+    strip(imgs[KEY + '-back'], Math.PI, BACK_HALF, 671 - Math.floor(imgs[KEY + '-back'].height / 2), rot);
     lctx.globalCompositeOperation = 'source-atop';
     lctx.fillStyle = shadeCache.shade; lctx.fillRect(0, 0, W, H);
     lctx.fillStyle = shadeCache.spec; lctx.fillRect(0, 0, W, H);
