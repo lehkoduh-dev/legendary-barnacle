@@ -89,9 +89,8 @@
   function frame() {
     ticking = false;
     var vw = window.innerWidth, vh = window.innerHeight, y = window.scrollY;
-    var trioEl = hero.querySelector('.trio') || hero;
-    var s0 = Math.max(0, trioEl.getBoundingClientRect().top + y - vh * 0.6);
-    var p = Math.max(0, Math.min(1, (y - s0) / (trioEl.offsetHeight * 0.8)));
+    var heroH = hero.offsetHeight;
+    var p = Math.max(0, Math.min(1, y / (heroH * 0.7)));
     hero.style.setProperty('--p', smooth(p).toFixed(4));
     var tr = target.getBoundingClientRect();
     var tgtY = tr.top + y;                         // page position of the card bottle

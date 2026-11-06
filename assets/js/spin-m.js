@@ -55,9 +55,7 @@
       ctx.drawImage(sheet, (idx % COLS) * FW, Math.floor(idx / COLS) * FH, FW, FH, 0, 0, FW, FH);
       lastIdx = idx;
     }
-    var trioEl = hero.querySelector('.trio') || hero;
-    var s0 = Math.max(0, trioEl.getBoundingClientRect().top + y - window.innerHeight * 0.6);
-    var p = clamp01((y - s0) / (trioEl.offsetHeight * 0.8));
+    var p = clamp01(y / (hero.offsetHeight * 0.7));
     hero.style.setProperty('--p', smooth(p).toFixed(3));
   }
 
