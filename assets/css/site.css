@@ -390,3 +390,12 @@ html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*
   .story-slide .story-copy{max-width:none}
 }
 .prose ul{margin:0 0 1.2em 1.2em;padding-left:1em}.prose ul li{margin:.3em 0}
+
+.story-slide.cheers{background:linear-gradient(90deg,rgba(20,14,10,.62) 0%,rgba(20,14,10,.3) 45%,rgba(20,14,10,0) 70%),url(../img/cheers-cups.jpg) 70% center/cover no-repeat;background-color:#c8643a}
+.story-slide.cheers .story-copy{max-width:min(40vw,520px)}
+@media(max-width:900px){.story-slide.cheers{background:linear-gradient(180deg,rgba(20,14,10,.55),rgba(20,14,10,.15) 70%),url(../img/cheers-cups.jpg) 62% center/cover no-repeat;align-items:flex-start;min-height:560px}.story-slide.cheers .story-copy{max-width:none}}
+@media(max-width:900px){.story-slide.cheers{background:linear-gradient(180deg,rgba(20,14,10,0) 25%,rgba(20,14,10,.85) 72%),url(../img/cheers-cups.jpg) 66% top/auto 62% no-repeat;background-color:#2a1810;align-items:flex-end;min-height:640px}.story-slide.cheers .wrap{padding-top:280px;padding-bottom:48px}}
+@media(min-width:901px){.story-slide.cheers{background:linear-gradient(90deg,#d6784f 0,#d6784f 17%,rgba(214,120,79,0) 38%),url(../img/cheers-cups.jpg) calc(100% + 330px) center/auto 112% no-repeat;background-color:#d6784f}.story-slide.cheers .story-copy{max-width:480px}.story-slide.cheers h2{color:#fff}}
+.story-slide>.wrap{width:100%}
+@media(min-width:901px){.story-slide.cheers{background:linear-gradient(90deg,#d6784f 0,#d6784f 20%,rgba(214,120,79,0) 40%),url(../img/cheers-cups.jpg) calc(100% + 240px) center/auto 108% no-repeat;background-color:#d6784f}.story-slide.cheers h2{font-size:clamp(2.2rem,4.2vw,3.6rem)}}
+@media(min-width:901px){.story-slide.cheers{background:linear-gradient(90deg,#d6784f 0,#d6784f 30%,rgba(214,120,79,0) 52%),url(../img/cheers-cups.jpg) calc(100% + 240px) center/auto 108% no-repeat;background-color:#d6784f}}
