@@ -197,3 +197,8 @@ ul.ing li span{min-width:84px;font-weight:700;color:var(--terra)}
 .rm h3{margin:.3em 0 .4em}
 .lang-sw{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8;text-decoration:none}
 @media (max-width:900px){.rmsteps{grid-template-columns:1fr}}
+.srow .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-top:36px;padding-bottom:36px}
+.srow .simg{aspect-ratio:4/3;background-size:cover;background-position:center;border-radius:var(--radius)}
+.srow.flip .stxt{order:2}
+.srow h2{font-size:clamp(1.8rem,3vw,2.6rem);margin:0 0 .4em}
+@media (max-width:900px){.srow .wrap{grid-template-columns:1fr;gap:20px}.srow.flip .stxt{order:0}}
