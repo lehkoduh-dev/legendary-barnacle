@@ -463,3 +463,4 @@ html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*
 /* grid children may shrink: stops tables/forms from widening the page on mobile */
 .two>*,.detail>*,.trade>*,.srow .wrap>*{min-width:0}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.card .body{flex:1}
