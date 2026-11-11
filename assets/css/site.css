@@ -459,3 +459,7 @@ html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*
 .srow.flip .stxt{order:2}
 .srow h2{font-size:clamp(1.8rem,3vw,2.6rem);margin:0 0 .4em}
 @media (max-width:900px){.srow .wrap{grid-template-columns:1fr;gap:20px}.srow.flip .stxt{order:0}}
+
+/* grid children may shrink: stops tables/forms from widening the page on mobile */
+.two>*,.detail>*,.trade>*,.srow .wrap>*{min-width:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
