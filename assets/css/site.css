@@ -376,7 +376,7 @@ html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*
 
 /* story slide: full-photo feature with dark overlay */
 .story-slide{position:relative;min-height:min(78vh,640px);display:flex;align-items:center;color:#fff;overflow:hidden;
-  background:linear-gradient(90deg,rgba(20,24,24,.72) 0%,rgba(20,24,24,.45) 48%,rgba(20,24,24,.12) 100%),url(../img/slide-pina-colada.jpg) 60% center/cover no-repeat;background-color:#2a3a38}
+  background:linear-gradient(90deg,rgba(20,24,24,.72) 0%,rgba(20,24,24,.45) 48%,rgba(20,24,24,.12) 100%),url(../img/slide-pina-colada-2.jpg) 60% center/cover no-repeat;background-color:#2a3a38}
 .story-slide .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:72px}
 .story-slide .story-copy{max-width:min(46vw,640px)}
 .story-slide .eyebrow{color:#fff;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-size:.85rem;margin:0 0 14px}
@@ -386,7 +386,7 @@ html.spin-m-on .hero .trio .b3{translate:calc(var(--p,0)*-40px) calc(var(--p,0)*
 .story-slide .btn-out:hover{background:#fff;color:#1c2a28}
 .story-slide .hero-note{color:#fff;opacity:.85;margin:18px 0 0;font-size:.85rem}
 @media(max-width:900px){
-  .story-slide{background:linear-gradient(180deg,rgba(20,24,24,.35),rgba(20,24,24,.7)),url(../img/slide-pina-colada.jpg) 62% center/cover no-repeat;min-height:520px}
+  .story-slide{background:linear-gradient(180deg,rgba(20,24,24,.35),rgba(20,24,24,.7)),url(../img/slide-pina-colada-2.jpg) 62% center/cover no-repeat;min-height:520px}
   .story-slide .story-copy{max-width:none}
 }
 .prose ul{margin:0 0 1.2em 1.2em;padding-left:1em}.prose ul li{margin:.3em 0}
